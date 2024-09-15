@@ -1,0 +1,52 @@
+{
+    "name": "haxneeraj/laravel-api-kit",    
+    "description": "set of tools to build an api with laravel",
+    "keywords": [
+        "laravel",
+        "api",
+        "filters",
+        "dynamic-pagination",
+        "tools",
+        "api-generator"
+    ],
+    "authors": [
+        {
+            "name": "Neeraj Saini",
+            "email": "hax-neeraj@outlook.com"
+        }
+    ],
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Haxneeraj\\LaravelAPIKit\\": "src/"
+        }
+    },
+    
+    "autoload-dev": {
+        "psr-4": {
+            "Essa\\APIToolKit\\Tests\\": "tests"
+        }
+    },
+    "require": {
+        "php": "^8.0|^8.1",
+        "illuminate/support": "^8.0|^9.0|^10.0|^11.0",
+        "illuminate/http": "^8.0|^9.0|^10.0|^11.0",
+        "illuminate/database": "^8.0|^9.0|^10.0|^11.0",
+        "illuminate/container": "^8.0|^9.0|^10.0|^11.0",
+        "illuminate/auth": "^8.0|^9.0|^10.0|^11.0",
+        "symfony/http-kernel": "^5.0|^6.0",
+        "symfony/http-foundation": "^5.0|^6.0",
+        "symfony/var-dumper": "^5.0|^6.0"
+    },
+
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Haxneeraj\\LaravelAPIKit\\LaravelAPIKitServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

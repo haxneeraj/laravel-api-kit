@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Transformers;
+
+use Haxneeraj\LaravelAPIKit\Transformer\LaravelAPIKitTransformer;
+
+class {{ class }} extends LaravelAPIKitTransformer
+{
+    /**
+     * Transform the given model data into an array.
+     *
+     * @param mixed $data The model instance to be transformed.
+     * @return array The transformed data.
+     */
+    public function model($data)
+    {
+        return [
+            //'id' => $data->id,
+            //'name' => $data->name,
+            //'email' => $data->email,
+            //'created_at' => $data->created_at,
+            //'updated_at' => $data->updated_at,
+        ];
+    }
+}
