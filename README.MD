@@ -234,7 +234,7 @@ The package provides a dedicated exception handler that converts common exceptio
         }
         catch(\Exception $e)
         {
-            return $this->handle($e);
+            return $this->handleException($e);
         }
     }
 
