@@ -29,9 +29,9 @@ abstract class LaravelApiKitRequest extends FormRequest
         if ($this->expectsJson()) {
             // Create a ValidationException instance
             $exception = new ValidationException($validator);
-            
+
             // Generate a custom API error response using ApiException
-            $response = (new ApiException())->handle($exception);
+            $response = ApiException::handleException($exception);
 
             // Throw a ValidationException with the custom JSON response
             throw new ValidationException($validator, $response);

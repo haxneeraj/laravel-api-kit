@@ -8,16 +8,16 @@
 
 ## Features
 
-- **Custom JSON Standardized Response Trait**  
+- **Custom JSON Standardized Response Trait**
   Easily return consistent JSON responses for API endpoints, including success, error, and various HTTP status codes.
-  
-- **Exception Handling**  
+
+- **Exception Handling**
   A dedicated exception handler that converts common exceptions (such as model not found, validation errors, etc.) into standardized JSON responses.
 
-- **Data Transformer**  
+- **Data Transformer**
   Simplify the transformation of models or other data structures for API responses.
 
-- **Custom Requests**  
+- **Custom Requests**
   Create custom request validation logic to handle incoming API requests with ease.
 
 - **Artisan Commands**
@@ -77,7 +77,7 @@ LaravelAPIKit also comes with translatable strings that you can modify. To publi
 You can now customize the translation files in `resources/lang/haxneeraj/laravel-api-kit/`.
 
  Usage
-    
+
     __('LaravelAPIKit::message.not_found')
 
 <hr />
@@ -277,7 +277,8 @@ Other way to use it as object.
             }
             catch(\Exception $e)
             {
-                return $this->apiException->handle($e);
+                return $this->apiException->handleException($e);
+                // or you can call the method statically. - return ApiException::handleException($e);
             }
         }
     }
@@ -288,8 +289,8 @@ Other way to use it as object.
 
 The package provides a data transformer that simplifies the transformation of models or other data structures for API responses. Use the following artisan command to create a new transformer class:
 
-    php artisan make:transformer UserTransformer 
-    
+    php artisan make:transformer UserTransformer
+
     //Or want to give a directory structure then
     php artisan make:transformer User/Usertransformer
 
@@ -345,7 +346,7 @@ The package provides a custom request class that allows you to create custom req
 
 The Request class will be generated in the `app/Http/Requests` directory.
 
- ExampleRequest Class 
+ ExampleRequest Class
 
     use Haxneeraj\LaravelAPIKit\Http\Requests\LaravelApiKitRequest;
 
@@ -383,9 +384,9 @@ Contributions are welcome and greatly appreciated. Please check out the [contrib
 
  Credits
 
-**Author:** Neeraj Saini  
-**Email:** [hax-neeraj@outlook.com](mailto:hax-neeraj@outlook.com)  
-**GitHub:** [https://github.com/haxneeraj/](https://github.com/haxneeraj/)  
+**Author:** Neeraj Saini
+**Email:** [hax-neeraj@outlook.com](mailto:hax-neeraj@outlook.com)
+**GitHub:** [https://github.com/haxneeraj/](https://github.com/haxneeraj/)
 **LinkedIn:** [https://www.linkedin.com/in/hax-neeraj/](https://www.linkedin.com/in/hax-neeraj/)
 
 **Twitter:** [https://x.com/hax_neeraj/](https://x.com/hax_neeraj/)

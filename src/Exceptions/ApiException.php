@@ -16,6 +16,7 @@ use Illuminate\Validation\ValidationException as coreValidationException;
 use Illuminate\Http\Exceptions\HttpResponseException as coreHttpResponseException;
 use Illuminate\Database\QueryException as coreQueryException;
 use Illuminate\Authentication\TokenMismatchException as coreTokenMismatchException;
+use BadMethodCallException as coreBadMethodCallException;
 
 use Haxneeraj\LaravelAPIKit\Exceptions\ModelNotFoundException;
 use Haxneeraj\LaravelAPIKit\Exceptions\NotFoundHttpException;
@@ -26,6 +27,7 @@ use Haxneeraj\LaravelAPIKit\Exceptions\ValidationException;
 use Haxneeraj\LaravelAPIKit\Exceptions\HttpResponseException;
 use Haxneeraj\LaravelAPIKit\Exceptions\QueryException;
 use Haxneeraj\LaravelAPIKit\Exceptions\TokenMismatchException;
+use Haxneeraj\LaravelAPIKit\Exceptions\BadMethodCallException;
 
 use Haxneeraj\LaravelAPIKit\Traits\APIResponseTrait;
 
@@ -39,13 +41,21 @@ use Haxneeraj\LaravelAPIKit\Traits\APIResponseTrait;
 class ApiException
 {
     use APIResponseTrait;
+
+
+    public static function handleException(\Throwable $e)
+    {
+        $instance = new self();
+        return $instance->handleExceptionInstance($e);
+    }
+
     /**
      * Handles an exception thrown during the application's execution.
      *
      * @param \Throwable $e The exception that was thrown.
      * @return \Illuminate\Http\JsonResponse
      */
-    public function handle(\Throwable $e)
+    final function handleExceptionInstance(\Throwable $e)
     {
         if (config('laravel-api-kit.dev_mode') === true):
             return $this->response(false, $e->getMessage(), [], [], 500);
@@ -68,6 +78,7 @@ class ApiException
             $e instanceof coreHttpResponseException => (new HttpResponseException($e))->render(),
             $e instanceof coreQueryException => (new QueryException($e))->render(),
             $e instanceof coreTokenMismatchException => (new TokenMismatchException($e))->render(),
+            $e instanceof coreBadMethodCallException => (new BadMethodCallException($e))->render(),
             default => $this->response(false, __('LaravelAPIKit::message.something_went_wrong'), 500),
         };
     }

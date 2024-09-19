@@ -15,6 +15,7 @@
             "email": "hax-neeraj@outlook.com"
         }
     ],
+    "version": "1.0.1",
     "type": "library",
     "license": "MIT",
     "autoload": {

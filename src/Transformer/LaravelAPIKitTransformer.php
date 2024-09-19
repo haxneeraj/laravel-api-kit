@@ -76,13 +76,13 @@ abstract class LaravelAPIKitTransformer
         }
         // Throw an exception if the input type is not supported.
         else {
-            if(request()->expectsJson())
+            if(!request()->expectsJson())
             {
                 // Create a ValidationException instance
                 $exception = new \RuntimeException('Expected instance of ' . Model::class . ' or ' . EloquentCollection::class);
 
                 // Generate a custom API error response using ApiException
-                return (new ApiException())->handle($exception);
+                return ApiException::handleException($exception);
             }
             throw new \RuntimeException('Expected instance of ' . Model::class . ' or ' . EloquentCollection::class);
         }
