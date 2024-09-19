@@ -42,7 +42,12 @@ class ApiException
 {
     use APIResponseTrait;
 
-
+    /**
+     * Handles an exception thrown during the application's execution.
+     *
+     * @param \Throwable $e The exception that was thrown.
+     * @return \Illuminate\Http\JsonResponse
+     */
     public static function handleException(\Throwable $e)
     {
         $instance = new self();
